@@ -1,38 +1,51 @@
 import React, { useState } from "react";
 import Task from "../Task/Task";
 import "./Tasks.scss";
+interface ITasks {
+  name: string;
+  time: string;
+}
 
 const Tasks = () => {
-  const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState<string[]>([]);
+  const [task, setTask] = useState<ITasks>({} as ITasks);
+  const [taskList, setTaskList] = useState<ITasks[]>([]);
 
   console.log(task);
   console.log(taskList);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTask(e.target.value);
+        const check =   setTask({...task,[e.target.name]: e.target.value });
+        console.log(check);
+        
   };
 
   const handleAdd = () => {
     const newTaskList = [...taskList, task];
     setTaskList(newTaskList);
-    setTask("");
+    setTask({
+      name: "",
+      time: "",
+    });
   };
+
+  const handleRemove = (name: string) => {
+      const newRemoveTaskList = taskList.filter(tk => tk.name !== name)
+      setTaskList(newRemoveTaskList);
+  }
 
   return (
     <div className="tasks">
       <div className="form">
-        
         <input
-          value={task}
+          value={task.name}
           onChange={handleChange}
           type="text"
           name="name"
           placeholder="Enter Task Name"
-          
         />
         <input
-          
+          value={task.time}
+          onChange={handleChange}
           type="text"
           name="time"
           placeholder="10AM - 11AM"
@@ -44,8 +57,8 @@ const Tasks = () => {
         </button>
       </div>
       <div>
-        {taskList.map((task) => (
-          <Task name={task} time="10AM - 11AM" key={task} />
+        {taskList.map((t) => (
+          <Task name={t.name} time={t.time} key={t.name} handleRemove={handleRemove} />
         ))}
       </div>
     </div>
