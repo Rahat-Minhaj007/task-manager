@@ -18,7 +18,7 @@ const Progress = ({ name, time,handleDone}: IProgress) => {
           <strong>Time: </strong>
           {time}
         </p>
-        <button className="btn btn-danger" onClick={() =>handleDone(name)}>
+        <button className="btn btn-dark" onClick={() =>handleDone(name)}>
         DONE
         </button>
       </div>

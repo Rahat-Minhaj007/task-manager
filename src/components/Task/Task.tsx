@@ -11,7 +11,7 @@ const Task = ({name,time,handleStart}:ITask) => {
            
             <p><strong>Task Name: </strong>{name}</p>
             <p><strong>Time: </strong>{time}</p>
-            <button className="btn btn-success" onClick={() => handleStart(name)}>START</button>
+            <button className="btn btn-dark" onClick={() => handleStart(name)}>START</button>
             
         </div>
     );
