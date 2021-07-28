@@ -3,14 +3,15 @@ import './Task.scss'
 interface ITask{
     name: string;
     time?: string;
-    handleRemove: (name: string) => void;
+    handleStart: (name: string) => void;
 }
-const Task = ({name,time,handleRemove}:ITask) => {
+const Task = ({name,time,handleStart}:ITask) => {
     return (
-        <div className="task-card">
+        <div className="task-card ">
+           
             <p><strong>Task Name: </strong>{name}</p>
             <p><strong>Time: </strong>{time}</p>
-            <button className="btn btn-danger" onClick={() => handleRemove(name)}>REMOVE</button>
+            <button className="btn btn-success" onClick={() => handleStart(name)}>START</button>
             
         </div>
     );
