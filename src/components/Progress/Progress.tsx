@@ -3,9 +3,10 @@ import "./Progress.scss";
 interface IProgress {
   name: string;
   time?: string;
+  handleDone: (name: string) => void;
  
 }
-const Progress = ({ name, time}: IProgress) => {
+const Progress = ({ name, time,handleDone}: IProgress) => {
   return (
     <div>
       <div className="progress-card ">
@@ -17,7 +18,7 @@ const Progress = ({ name, time}: IProgress) => {
           <strong>Time: </strong>
           {time}
         </p>
-        <button className="btn btn-danger" >
+        <button className="btn btn-danger" onClick={() =>handleDone(name)}>
         DONE
         </button>
       </div>
